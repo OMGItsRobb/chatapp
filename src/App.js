@@ -1,6 +1,6 @@
 import React from 'react';
-import './styles/main.scss';
 import 'rsuite/dist/rsuite.min.css';
+import './styles/main.scss';
 
 function App() {
   return <div className="App">H3llo!</div>;
