@@ -21,6 +21,7 @@ function SignIn() {
           createdAt: `${new Date().toLocaleString('en-US', {
             timeZone: 'UTC',
           })} (UTC)`,
+          displayName: result.user.displayName,
         });
       }
       console.log('Success!');
