@@ -4,6 +4,7 @@ import { ImExit } from 'react-icons/im';
 import { useProfile } from '../../context/profile.context';
 import EditInput from './EditInput';
 import { database } from '../../misc/firebase';
+import ProviderBlock from './ProviderBlock';
 
 const DashboardIndex = ({ onSignOut }) => {
   const { profile } = useProfile();
@@ -25,6 +26,7 @@ const DashboardIndex = ({ onSignOut }) => {
       </Drawer.Header>
       <Drawer.Body>
         <h3>Hey, {profile.displayName}</h3>
+        <ProviderBlock />
         <Divider />
         <EditInput
           displayName="nickname"
