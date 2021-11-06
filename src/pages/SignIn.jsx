@@ -3,6 +3,7 @@ import firebase from 'firebase/app';
 import { Container, Row, Grid, Col, Panel, Button } from 'rsuite';
 import { FaGoogle, FaFacebookSquare } from 'react-icons/fa';
 import { auth, database } from '../misc/firebase';
+import { randColorHex } from '../misc/helpers';
 
 function SignIn() {
   const signInWithProvider = async provider => {
@@ -22,6 +23,7 @@ function SignIn() {
             timeZone: 'UTC',
           })} (UTC)`,
           displayName: result.user.displayName,
+          avatarColors: `#${randColorHex()}, #${randColorHex()} `,
         });
       }
       console.log('Success!');

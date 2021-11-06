@@ -15,11 +15,13 @@ export const ProfileProvider = ({ children }) => {
         userRef = database.ref(`/profiles/${authObj.uid}`);
 
         userRef.on('value', s => {
-          const { displayName, createdAtUNIX } = s.val();
+          const { displayName, createdAtUNIX, avatar, avatarColors } = s.val();
 
           const profileData = {
             displayName,
             createdAtUNIX,
+            avatar,
+            avatarColors,
             name: authObj.name,
             uid: authObj.uid,
             email: authObj.email,
