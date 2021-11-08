@@ -13,3 +13,11 @@ export function getNameInitials(name) {
 
 export const randColorHex = () =>
   Math.floor(Math.random() * 16777215).toString(16);
+
+export function transformToArrWithId(snapVal) {
+  return snapVal
+    ? Object.keys(snapVal).map(roomId => {
+        return { ...snapVal[roomId], id: roomId };
+      })
+    : [];
+}

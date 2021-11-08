@@ -37,6 +37,7 @@ const CreateRoomBtnModal = () => {
     const newRoomData = {
       ...formValue,
       createdAt: `${new Date()}`,
+      createdAtUNIX: +new Date(),
     };
     try {
       await database.ref('rooms').push(newRoomData);

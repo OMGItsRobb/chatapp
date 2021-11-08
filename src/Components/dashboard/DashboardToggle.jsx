@@ -23,7 +23,6 @@ const DashboardToggle = () => {
       <Drawer full={isMobile} open={isOpen} onClose={close} placement="left">
         <DashboardIndex onSignOut={onSignOut}></DashboardIndex>
       </Drawer>
-      bottom
     </>
   );
 };
