@@ -36,8 +36,8 @@ const EditInput = ({
   const onSaveClick = async () => {
     const trimmed = input.trim();
 
-    if (!trimmed.match(/^[^\W_]{3,15}$/i)) {
-      alert('Display name must be 3-10 characters, no symbols or spaces');
+    if (!trimmed.match(/^[a-z\sa-z]{3,16}$/i)) {
+      alert('Display name must be 3-16 characters & no symbols');
       return;
     }
     if (trimmed !== initialValue) {
