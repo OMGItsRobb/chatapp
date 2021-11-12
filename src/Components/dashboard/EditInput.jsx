@@ -9,7 +9,7 @@ const EditInput = ({
   label = null,
   placeholder = 'Change Display Name...',
   emptyMessage = 'Input is Empty',
-  //   ...inputProps
+  ...inputProps
 }) => {
   const editStyleTrue = {
     background: 'rgba(61, 131, 187, 1)',

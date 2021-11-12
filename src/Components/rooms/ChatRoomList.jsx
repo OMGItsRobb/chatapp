@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation, Route } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Loader from 'rsuite/Loader';
 import Nav from 'rsuite/Nav';
 import { useRooms } from '../../context/rooms.Context';

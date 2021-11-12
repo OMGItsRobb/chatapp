@@ -6,14 +6,34 @@ import EditInput from './EditInput';
 import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
 import AvatarUploadBtn from './AvatarUploadBtn';
+import { getUserUpdates } from '../../misc/helpers';
 
 const DashboardIndex = ({ onSignOut }) => {
   const { profile } = useProfile();
 
+  // const displayNameOnSave = async newData => {
+  //   const displayNameRef = database.ref(`/profiles/${profile.uid}/displayName`);
+
+  //   try {
+  //     await displayNameRef.set(newData);
+  //   } catch (err) {
+  //     alert("This didn't work...");
+  //   }
+  // };
+
   const onSave = async newData => {
-    const displayNameRef = database.ref(`/profiles/${profile.uid}/displayName`);
+    // const displayNameRef = database.ref(`/profiles/${profile.uid}/displayName`);
     try {
-      await displayNameRef.set(newData);
+      // await displayNameRef.set(newData);
+
+      const updates = await getUserUpdates(
+        profile.uid,
+        'displayName',
+        newData,
+        database
+      );
+
+      await database.ref().update(updates);
     } catch (error) {
       alert('hmm...something went wrong');
       console.log(error);
@@ -33,6 +53,7 @@ const DashboardIndex = ({ onSignOut }) => {
           displayName="nickname"
           initialValue={profile.displayName}
           onSave={onSave}
+          displayNameOnSave={onSave}
           label={<h6 className="mb-2">Nickname</h6>}
         />
         <AvatarUploadBtn />

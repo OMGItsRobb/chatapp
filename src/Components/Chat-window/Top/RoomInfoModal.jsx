@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Button, Modal } from 'rsuite';
+import { Button, Col, Divider, Grid, Modal } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room-context';
 import { useModalState } from '../../../misc/CustomHooks';
 
@@ -10,17 +10,23 @@ const RoomInfoModal = () => {
 
   return (
     <>
-      <Button appearance="link" className="px-0" onClick={open}>
+      <Button appearance="ghost" className="px-0" onClick={open}>
         Room Information
       </Button>
-      <Modal open={isOpen} close={close}>
+      <Modal open={isOpen} onClose={close}>
         <Modal.Header>
           <Modal.Title>About — {name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Divider />
+        <Modal.Body style={{ overflowX: 'hidden' }}>
           <h5 className="mb-1">Description</h5>
           <p>{description}</p>
-          <p>Participants</p>
+          <Divider className="mb-1" />
+          <h6>Participants</h6>
+          <Grid>
+            <Col xs={6}></Col>
+            <Col xs={6}></Col>
+          </Grid>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={close} block>

@@ -48,6 +48,7 @@ const BottomChat = () => {
     updates[`/rooms/${chatId}/lastMessage`] = {
       ...msgData,
       msgId: messageId,
+      avatarColors: profile.avatarColors,
     };
     try {
       setLoading(true);

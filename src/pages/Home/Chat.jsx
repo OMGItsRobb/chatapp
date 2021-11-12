@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
-import { Divider, Loader } from 'rsuite';
+import { Loader } from 'rsuite';
 import BottomChat from '../../Components/Chat-window/Bottom/BottomChat';
 import MessagesChat from '../../Components/Chat-window/Messages/MessagesChat';
 import TopChat from '../../Components/Chat-window/Top/TopChat';
