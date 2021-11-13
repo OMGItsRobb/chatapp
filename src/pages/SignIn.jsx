@@ -23,7 +23,7 @@ function SignIn() {
             timeZone: 'UTC',
           })} (UTC)`,
           displayName: result.user.displayName,
-          avatarColors: `#${randColorHex()}, #${randColorHex()} `,
+          avatarColors: `#${randColorHex()}, #${randColorHex()}`,
         });
       }
       console.log('Success!');
