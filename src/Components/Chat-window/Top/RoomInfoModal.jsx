@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { Button, Col, Divider, Grid, Modal } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room-context';
 import { useModalState } from '../../../misc/CustomHooks';
+import { AiFillInfoCircle } from 'react-icons/ai';
 
 const RoomInfoModal = () => {
   const { isOpen, close, open } = useModalState();
@@ -10,15 +11,23 @@ const RoomInfoModal = () => {
 
   return (
     <>
-      <Button appearance="ghost" className="px-0" onClick={open}>
-        Room Information
+      <Button appearance="primary" className="" onClick={open}>
+        <AiFillInfoCircle
+          style={{
+            fontSize: 25,
+            verticalAlign: 'middle',
+            marginRight: 5,
+            color: '#0b6ccb',
+          }}
+        />
+        <b style={{ verticalAlign: 'middle' }}>Room Info</b>
       </Button>
       <Modal open={isOpen} onClose={close}>
         <Modal.Header>
           <Modal.Title>About — {name}</Modal.Title>
         </Modal.Header>
         <Divider />
-        <Modal.Body style={{ overflowX: 'hidden' }}>
+        <Modal.Body>
           <h5 className="mb-1">Description</h5>
           <p>{description}</p>
           <Divider className="mb-1" />

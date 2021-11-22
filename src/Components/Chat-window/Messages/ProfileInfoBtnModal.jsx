@@ -7,11 +7,11 @@ import ProfileAvatar from '../../ProfileAvatar';
 
 const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
   const { isOpen, open, close } = useModalState();
-  const shortName = profile.displayName.split(' ')[0];
+  const shortName = profile.displayName;
   return (
     <>
       <Button {...btnProps} onClick={open}>
-        {shortName}
+        <b>{shortName}</b>
       </Button>
 
       <Modal open={isOpen} onClose={close}>

@@ -9,7 +9,11 @@ const ProfileAvatar = ({ name, avatarColors, avatar, ...avatarProps }) => {
   };
 
   return (
-    <Avatar {...avatarProps} style={!avatar ? styledAvatar : () => {}} circle>
+    <Avatar
+      {...avatarProps}
+      style={!avatar ? styledAvatar : { ...avatarProps }}
+      circle
+    >
       {getNameInitials(name)}
     </Avatar>
   );

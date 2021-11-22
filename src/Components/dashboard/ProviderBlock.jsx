@@ -68,13 +68,23 @@ function ProviderBlock() {
     <div>
       <div>
         {isConnected['facebook.com'] && (
-          <Tag color="blue" closable onClose={unlinkFacebook}>
+          <Tag
+            color="blue"
+            closable
+            onClose={unlinkFacebook}
+            title="Connected to Facebook!"
+          >
             <FaFacebookSquare style={{ verticalAlign: '-1px' }} />
             <span> Connected</span>
           </Tag>
         )}
         {isConnected['google.com'] && (
-          <Tag color="green" closable onClose={unlinkGoogle}>
+          <Tag
+            color="green"
+            closable
+            onClose={unlinkGoogle}
+            title="Connected to Google!"
+          >
             <FaGoogle style={{ verticalAlign: '-1px' }} />{' '}
             <span> Connected</span>
           </Tag>

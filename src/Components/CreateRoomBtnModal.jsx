@@ -1,8 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { Button, Form, Modal, Schema } from 'rsuite';
+import { Button, Form, Modal, Notification, Schema, toaster } from 'rsuite';
 import { BsFillPlusCircleFill } from 'react-icons/bs';
 import { useModalState } from '../misc/CustomHooks';
-import { database } from '../misc/firebase';
+import { auth, database } from '../misc/firebase';
 // import firebase from 'firebase';
 
 const { StringType } = Schema.Types;
@@ -30,7 +30,21 @@ const CreateRoomBtnModal = () => {
 
   const onSubmit = async () => {
     if (!formRef.current.check()) {
-      alert(`Something isn't right...`);
+      toaster.push(
+        <Notification
+          style={{ backgroundColor: '#F9FEBA' }}
+          closable
+          type="error"
+          header="error"
+          width={320}
+          duration={5000}
+        >
+          Something isn't right here...
+        </Notification>,
+        {
+          placement: 'topCenter',
+        }
+      );
       return;
     }
 
@@ -38,13 +52,29 @@ const CreateRoomBtnModal = () => {
       ...formValue,
       createdAt: `${new Date()}`,
       createdAtUNIX: +new Date(),
+      admins: {
+        [auth.currentUser.uid]: true,
+      },
     };
     try {
       await database.ref('rooms').push(newRoomData);
       setFormValue(INITIAL_FORM);
       setIsLoading(false);
       close();
-      alert(`${formValue.name} has been created!`);
+      toaster.push(
+        <Notification
+          style={{ backgroundColor: '#C9FFBD' }}
+          closable
+          type="success"
+          header="Success"
+          duration={5000}
+        >
+          Room created
+        </Notification>,
+        {
+          placement: 'topCenter',
+        }
+      );
     } catch (error) {
       setIsLoading(false);
       alert(`error: ${error}`);

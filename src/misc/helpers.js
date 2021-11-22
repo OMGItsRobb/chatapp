@@ -11,8 +11,14 @@ export function getNameInitials(name) {
   }
 }
 
-export const randColorHex = () =>
-  Math.floor(Math.random() * 16777215).toString(16);
+export const randColorHex = () => {
+  const randNum = (min, max) =>
+    Math.floor(Math.random() * (max - min + 1) + min);
+  return `rgb(${randNum(0, 200)}, ${randNum(0, 210)}, ${randNum(
+    0,
+    230
+  )}), rgb(${randNum(0, 230)}, ${randNum(0, 210)}, ${randNum(0, 200)})`;
+};
 
 export function transformToArrWithId(snapVal) {
   return snapVal
@@ -20,6 +26,11 @@ export function transformToArrWithId(snapVal) {
         return { ...snapVal[roomId], id: roomId };
       })
     : [];
+}
+
+export function transformToArr(snapVal) {
+  console.log(snapVal);
+  return snapVal ? Object.keys(snapVal) : [];
 }
 
 export async function getUserUpdates(userId, keyToUpdate, value, db) {

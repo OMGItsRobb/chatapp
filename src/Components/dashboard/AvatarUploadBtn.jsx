@@ -8,6 +8,7 @@ import { useProfile } from '../../context/profile.context';
 import { database } from '../../misc/firebase';
 import ProfileAvatar from '../ProfileAvatar';
 import { getUserUpdates } from '../../misc/helpers';
+import { toaster, Notification } from 'rsuite';
 
 const fileInputTypes = '.png, .jpeg, .jpg';
 
@@ -76,10 +77,37 @@ const AvatarUploadBtn = ({ avatarColors }) => {
 
       setIsLoading(false);
 
-      alert('Avatar has been uploaded');
+      toaster.push(
+        <Notification
+          closable
+          type="success"
+          header="Success!"
+          width={320}
+          duration={5000}
+        >
+          Avatar has been uploaded
+        </Notification>,
+        {
+          placement: 'topCenter',
+        }
+      );
+      close();
     } catch (error) {
+      toaster.push(
+        <Notification
+          closable
+          type="error"
+          header="Error..."
+          width={320}
+          duration={5000}
+        >
+          {error}
+        </Notification>,
+        {
+          placement: 'topCenter',
+        }
+      );
       setIsLoading(false);
-      alert(`Error: ${error}`);
     }
   };
 
@@ -94,53 +122,13 @@ const AvatarUploadBtn = ({ avatarColors }) => {
       />
       <div>
         <div>
-          {/* <ButtonGroup
-            style={{
-              marginTop: '5px',
-            }}
-          >
-            {isClicked && (
-              <Button
-                color="red"
-                appearance="primary"
-                onClick={changeAvatarColorConfirm}
-              >
-                <AiOutlineStop
-                  style={{
-                    fontSize: 15,
-                    fontWeight: 'bold',
-                  }}
-                ></AiOutlineStop>
-              </Button>
-            )}
-            <Button
-              onClick={changeAvatarColor}
-              onBlur={changeAvatarColorConfirm}
-              style={{
-                backgroundImage: `linear-gradient(to right, #${randColorHex()}, #${randColorHex()}`,
-                color: '#2c3e50',
-                fontWeight: 'bold',
-              }}
-            >
-              Change Avatar Colors
-            </Button>
-            {isClicked && (
-              <Button
-                onClick={changeAvatarColorConfirm}
-                color="green"
-                appearance="primary"
-              >
-                <AiOutlineCheck />
-              </Button>
-            )}
-          </ButtonGroup> */}
-
           <label
             htmlFor="avatar-upload"
             className="d-block cursor-pointer padded"
           >
             Select new avatar
             <input
+              disabled={true}
               id="avatar-upload"
               type="file"
               className="d-none"

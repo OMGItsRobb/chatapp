@@ -30,7 +30,9 @@ const RoomItems = ({ room }) => {
               ></ProfileAvatar>
             </div>
             <div className="text-disappear ml-2">
-              <div className="italic">{lastMessage.author.displayName}</div>
+              <b>
+                <div className="italic">{lastMessage.author.displayName}</div>
+              </b>
               <span>{lastMessage.text}</span>
             </div>
           </>

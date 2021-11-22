@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { Input, InputGroup } from 'rsuite';
 import InputGroupButton from 'rsuite/esm/InputGroup/InputGroupButton';
 import { RiSendPlaneFill, RiAttachment2 } from 'react-icons/ri';
@@ -28,6 +28,7 @@ const BottomChat = () => {
 
   const { chatId } = useParams();
   const { profile } = useProfile();
+  const messageElement = useRef();
 
   const onInputChange = useCallback(value => {
     setInput(value);
@@ -55,6 +56,7 @@ const BottomChat = () => {
       await database.ref().update(updates);
       setInput('');
       setLoading(false);
+      messageElement.current.focus();
     } catch (error) {
       setInput('');
       setLoading(false);
@@ -82,6 +84,8 @@ const BottomChat = () => {
           onKeyDown={onEnterDown}
           placeholder="Write a new message..."
           disabled={Loading}
+          autoFocus
+          ref={messageElement}
         ></Input>
         <InputGroupButton>
           <FaMicrophone style={{ fontSize: 20 }}></FaMicrophone>

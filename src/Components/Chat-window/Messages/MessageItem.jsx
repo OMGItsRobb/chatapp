@@ -13,7 +13,7 @@ const MessageItem = ({ message }) => {
         <ProfileAvatar
           name={author.displayName}
           avatarColors={author.avatarColors}
-          avatar={author.avatar}
+          src={author.avatar}
           className="ml-1 mb-1"
           size="md"
         />
@@ -28,7 +28,7 @@ const MessageItem = ({ message }) => {
         />
       </div>
       <div>
-        <span className="word-break-all ml-3">{text}</span>
+        <span className="ml-3">{text}</span>
       </div>
     </li>
   );

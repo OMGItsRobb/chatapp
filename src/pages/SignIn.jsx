@@ -23,7 +23,7 @@ function SignIn() {
             timeZone: 'UTC',
           })} (UTC)`,
           displayName: result.user.displayName,
-          avatarColors: `#${randColorHex()}, #${randColorHex()}`,
+          avatarColors: randColorHex(),
         });
       }
       console.log('Success!');
@@ -48,7 +48,8 @@ function SignIn() {
             <Panel>
               <div className="text-center">
                 <h2>Welcome to Chat!</h2>
-                <p>Sick-awesome chat platform for idiots</p>
+                <p>— By Nolan Tronowicz</p>
+                <h6>Sick awesome chatty chatt</h6>
               </div>
               <div className="mt-3">
                 <Button
